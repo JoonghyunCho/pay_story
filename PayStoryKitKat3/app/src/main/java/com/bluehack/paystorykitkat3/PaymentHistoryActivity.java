@@ -1,14 +1,31 @@
 package com.bluehack.paystorykitkat3;
 
+import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.Currency;
+import java.util.Date;
 
 /**
  * Created by drago on 2016-04-08.
  */
 public class PaymentHistoryActivity extends AppCompatActivity {
+    private ListView mListView = null;
+    private ListViewAdapter mAdapter = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,5 +36,102 @@ public class PaymentHistoryActivity extends AppCompatActivity {
         toolbar.setTitle(R.string.toolbar_for_paymenthistory_name);
         toolbar.setTitleTextColor(0xFF4E4E50);
         setSupportActionBar(toolbar);
+
+        mListView = (ListView)findViewById(R.id.payment_history_listview);
+        mAdapter = new ListViewAdapter(this);
+        mListView.setAdapter(mAdapter);
+
+        mAdapter.addItem(new Date(), "크레마도로", new String("20000"));
+        mAdapter.addItem(new Date(), "크레마도로", new String("20000"));
+        mAdapter.addItem(new Date(), "크레마도로", new String("20000"));
+
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //ListData mData = mAdapter.mListData.get(position);
+                //Toast.makeText(this, "click!!", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private class ListViewAdapter extends BaseAdapter {
+        private Context mContext = null;
+        private ArrayList<ListData> mListData = new ArrayList<ListData>();
+
+        public ListViewAdapter(Context mContext) {
+            super();
+            this.mContext = mContext;
+        }
+
+        @Override
+        public int getCount() {
+            return mListData.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return mListData.get(position);
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            ViewHolder holder;
+            if (convertView == null) {
+                holder = new ViewHolder();
+
+                LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                convertView = inflater.inflate(R.layout.tab1_card_detail_listview, null);
+
+                holder.mDate = (TextView) convertView.findViewById(R.id.text_listview_date);
+                holder.mShop = (TextView) convertView.findViewById(R.id.text_listview_shop);
+                holder.mPrice = (TextView) convertView.findViewById(R.id.text_listview_price);
+
+                convertView.setTag(holder);
+            } else {
+                holder = (ViewHolder) convertView.getTag();
+            }
+
+            ListData mData = mListData.get(position);
+            holder.mDate.setText(mData.mDate.toString());
+            holder.mShop.setText(mData.mShop);
+            holder.mPrice.setText(mData.mPrice.toString());
+
+            return convertView;
+        }
+
+        public void addItem(Date mDate, String mShop, String mPrice) {
+            ListData addInfo = null;
+            addInfo = new ListData();
+            addInfo.mDate = mDate;
+            addInfo.mShop = mShop;
+            addInfo.mPrice = mPrice;
+            mListData.add(addInfo);
+        }
+
+        public void remove(int position){
+            mListData.remove(position);
+            dataChange();
+        }
+
+        public void dataChange(){
+            mAdapter.notifyDataSetChanged();
+        }
+    }
+
+    public class ListData {
+        public Date mDate;
+        public String mShop;
+        public String mPrice;
+    }
+
+    private class ViewHolder {
+        public TextView mDate;
+        public TextView mShop;
+        public TextView mPrice;
     }
 }
