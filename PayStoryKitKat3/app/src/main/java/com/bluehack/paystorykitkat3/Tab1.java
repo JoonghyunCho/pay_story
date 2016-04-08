@@ -22,6 +22,7 @@ public class Tab1 extends  Fragment {
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(getActivity(), PaymentHistoryActivity.class);
+            intent.putExtra("card_id", v.getId());
             startActivity(intent);
         }
     };

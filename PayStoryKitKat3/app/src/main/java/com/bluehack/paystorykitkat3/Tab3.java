@@ -36,7 +36,7 @@ public class Tab3 extends  Fragment {
         mAdapter.addItem("16.04.03", "빈폴", "160,200원");
         mAdapter.addItem("16.04.03", "회화나무로스터스", "10,500원");
         mAdapter.addItem("16.04.04", "배상면주가", "98,000원");
-        mAdapter.addItem("16.04.05", "올리브영 합정", "11,500d원");
+        mAdapter.addItem("16.04.05", "올리브영 합정", "11,500원");
         mAdapter.addItem("16.04.05", "카페자스", "12,000원");
         mAdapter.addItem("16.04.06", "시카고피자", "43,000원");
         mAdapter.addItem("16.04.06", "풋락커", "98,000원");

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">PayStoryKitKat3</string>
     <string name="tab_name_1">결제</string>
-    <string name="tab_name_2">멤버십</string>
-    <string name="tab_name_3">교통</string>
+    <string name="tab_name_2">주변</string>
+    <string name="tab_name_3">구매 내역</string>
     <string name="toolbar_for_paymenthistory_name">카드 상세정보</string>
 </resources>

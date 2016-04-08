@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -19,6 +20,7 @@ import java.util.Date;
 public class PaymentHistoryActivity extends AppCompatActivity {
     private ListView mListView = null;
     private ListViewAdapter mAdapter = null;
+    private ImageView mCardImage = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,34 @@ public class PaymentHistoryActivity extends AppCompatActivity {
         mListView = (ListView)findViewById(R.id.payment_history_listview);
         mAdapter = new ListViewAdapter(this);
         mListView.setAdapter(mAdapter);
+
+
+        mCardImage = (ImageView)findViewById(R.id.tab1_detail_card_image);
+        Intent intent = getIntent();
+        int mCardId = intent.getIntExtra("card_id", 2);
+        switch(mCardId) {
+            case R.id.tab1_card_image1:
+                mCardImage.setImageResource(R.drawable.samsungcard1);
+                break;
+            case R.id.tab1_card_image2:
+                mCardImage.setImageResource(R.drawable.samsungcard2);
+                break;
+            case R.id.tab1_card_image3:
+                mCardImage.setImageResource(R.drawable.samsungcard3);
+                break;
+            case R.id.tab1_card_image4:
+                mCardImage.setImageResource(R.drawable.samsungcard4);
+                break;
+            case R.id.tab1_card_image5:
+                mCardImage.setImageResource(R.drawable.samsungcard5);
+                break;
+            default:
+                mCardImage.setImageResource(R.drawable.samsungcard3);
+                break;
+        }
+
+
+
 
         mAdapter.addItem(new Date(), "크레마도로", new String("20,000원"));
         mAdapter.addItem(new Date(), "더 자스", new String("38,000원"));
