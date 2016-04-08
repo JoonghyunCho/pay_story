@@ -33,15 +33,22 @@ public class Tab3 extends  Fragment {
         mAdapter = new ListViewAdapter(getActivity());
         mListView.setAdapter(mAdapter);
 
-        mAdapter.addItem(new Date(), "크레마도로", new String("20,000"));
-        mAdapter.addItem(new Date(), "더 자스", new String("38,000"));
-        mAdapter.addItem(new Date(), "크레마도로", new String("12,000"));
+        mAdapter.addItem("16.04.03", "빈폴", "160,200원");
+        mAdapter.addItem("16.04.03", "회화나무로스터스", "10,500원");
+        mAdapter.addItem("16.04.04", "배상면주가", "98,000원");
+        mAdapter.addItem("16.04.05", "올리브영 합정", "11,500d원");
+        mAdapter.addItem("16.04.05", "카페자스", "12,000원");
+        mAdapter.addItem("16.04.06", "시카고피자", "43,000원");
+        mAdapter.addItem("16.04.06", "풋락커", "98,000원");
+        mAdapter.addItem("16.04.07", "삼성스토어", "650,000원");
+        mAdapter.addItem("16.04.07", "올리브영", "16,500원");
+        mAdapter.addItem("16.04.08", "바이크샵", "720,000원");
 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //Intent intent = new Intent(getApplication(), PostFormActivity.class);
-                //startActivity(intent);
+                Intent intent = new Intent(getActivity(), PostFormActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -91,14 +98,14 @@ public class Tab3 extends  Fragment {
             }
 
             ListData mData = mListData.get(position);
-            holder.mDate.setText(mData.mDate.toString());
+            holder.mDate.setText(mData.mDate);
             holder.mShop.setText(mData.mShop);
-            holder.mPrice.setText(mData.mPrice.toString());
+            holder.mPrice.setText(mData.mPrice);
 
             return convertView;
         }
 
-        public void addItem(Date mDate, String mShop, String mPrice) {
+        public void addItem(String mDate, String mShop, String mPrice) {
             ListData addInfo = null;
             addInfo = new ListData();
             addInfo.mDate = mDate;
@@ -118,7 +125,7 @@ public class Tab3 extends  Fragment {
     }
 
     public class ListData {
-        public Date mDate;
+        public String mDate;
         public String mShop;
         public String mPrice;
     }

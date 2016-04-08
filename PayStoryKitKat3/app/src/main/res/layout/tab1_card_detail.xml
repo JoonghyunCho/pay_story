@@ -21,7 +21,8 @@
             android:id="@+id/tab1_detail_card_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/samsungcard3"/>
+            android:background="@drawable/samsungcard3"
+            android:layout_margin="10dp" />
 
         <LinearLayout
             android:id="@+id/tab1_payment_list"
@@ -33,7 +34,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
-                android:text="SFC SamsungCard 3"/>
+                android:layout_marginTop="10dp"
+                android:text="SFC SamsungCard 3"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="3dp"
+                android:textSize="15sp" />
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -41,19 +46,29 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
-                    android:text="이용 내역"
-                    />
+                    android:layout_marginBottom="10dp"
+                    android:text=" 이용 내역"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="15sp" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:text="모두 보기"/>
+                    android:layout_centerVertical="true"
+                    android:text="모두 보기 >"
+                    android:layout_marginRight="10dp"
+                    android:textSize="15sp" />
             </RelativeLayout>
             <ListView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:id="@+id/payment_history_listview">
+                android:id="@+id/payment_history_listview"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:padding="4dp"
+                android:dividerHeight="1dp"
+                android:divider="#FF707070">
             </ListView>
         </LinearLayout>
     </LinearLayout>

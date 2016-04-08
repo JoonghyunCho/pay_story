@@ -1,13 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/tab1_layout">
+    android:layout_height="match_parent">
+    <LinearLayout android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/tab1_layout">
+        
+        <ImageView
+            android:id="@+id/tab1_card_image1"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@drawable/samsungcard1"
+            android:layout_margin="5dp" />
+        <ImageView
+            android:id="@+id/tab1_card_image2"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@drawable/samsungcard2"
+            android:layout_margin="5dp" />
+        <ImageView
+            android:id="@+id/tab1_card_image3"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@drawable/samsungcard3"
+            android:layout_margin="5dp" />
+        <ImageView
+            android:id="@+id/tab1_card_image4"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@drawable/samsungcard4"
+            android:layout_margin="5dp"/>
+        <ImageView
+            android:id="@+id/tab1_card_image5"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@drawable/samsungcard5"
+            android:layout_margin="5dp"/>
 
-    <ImageView
-        android:id="@+id/tab1_card_image"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/samsungcard3" />
-
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>
