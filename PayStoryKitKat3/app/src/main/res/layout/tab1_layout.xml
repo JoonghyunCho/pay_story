@@ -8,6 +8,7 @@
         android:id="@+id/tab1_card_image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/samsungcard3" />
+        android:background="@drawable/samsungcard3"
+        android:layout_margin="10dp" />
 
 </LinearLayout>
