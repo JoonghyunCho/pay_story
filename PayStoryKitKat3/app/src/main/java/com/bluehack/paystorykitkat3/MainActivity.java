@@ -13,8 +13,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("PayStory");
         toolbar.setTitleTextColor(0xFF4E4E50);
+        toolbar.setBackgroundColor(0xF5F5F5);
+        toolbar.setTitle("SAMSUNG Pay");
         setSupportActionBar(toolbar);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
