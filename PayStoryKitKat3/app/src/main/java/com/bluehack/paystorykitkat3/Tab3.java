@@ -1,86 +1,131 @@
 package com.bluehack.paystorykitkat3;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Tab3 extends  Fragment {
     private View mTab3Layout = null;
-    private LinearLayout mContentsLayout = null;
+    private ListView mListView = null;
+    private ListViewAdapter mAdapter = null;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mTab3Layout = inflater.inflate(R.layout.tab3_layout, container, false);
-        mContentsLayout = (LinearLayout)mTab3Layout.findViewById(R.id.tab3_list);
+        mListView = (ListView)mTab3Layout.findViewById(R.id.tab3_listview);
 
-        /*ImageView img1 = new ImageView(this.getActivity());
-        img1.setImageResource(R.drawable.list01);
-        ImageView img2 = new ImageView(this.getActivity());
-        img2.setImageResource(R.drawable.list02);
-        ImageView img3 = new ImageView(this.getActivity());
-        img3.setImageResource(R.drawable.list03);
-        ImageView img4 = new ImageView(this.getActivity());
-        img4.setImageResource(R.drawable.list04);
-        ImageView img5 = new ImageView(this.getActivity());
-        img5.setImageResource(R.drawable.list05);
+        mAdapter = new ListViewAdapter(getActivity());
+        mListView.setAdapter(mAdapter);
 
-        mContentsLayout.addView(img1);
-        mContentsLayout.addView(img2);
-        mContentsLayout.addView(img3);
-        mContentsLayout.addView(img4);
-        mContentsLayout.addView(img5);
-*/
-        View img1 = createContentLayout(inflater, mContentsLayout, "16.04.03", "빈폴", "160,200원", R.color.primary_material_light);
-        View img2 = createContentLayout(inflater, mContentsLayout, "16.04.03", "회화나무로스터스", "10,500원", R.color.primary_material_light);
-        View img3 = createContentLayout(inflater, mContentsLayout, "16.04.04", "배상면주가", "98,000원", R.color.primary_material_light);
-        View img4 = createContentLayout(inflater, mContentsLayout, "16.04.05", "올리브영 합정", "11,500d원", R.color.primary_material_light);
-        View img5 = createContentLayout(inflater, mContentsLayout, "16.04.05", "카페자스", "12,000원", R.color.primary_material_light);
-        View img6 = createContentLayout(inflater, mContentsLayout, "16.04.06", "시카고피자", "43,000원", R.color.primary_material_light);
-        View img7 = createContentLayout(inflater, mContentsLayout, "16.04.06", "풋락커", "98,000원", R.color.primary_material_light);
-        View img8 = createContentLayout(inflater, mContentsLayout, "16.04.07", "삼성스토어", "650,000원", R.color.primary_material_light);
-        View img9 = createContentLayout(inflater, mContentsLayout, "16.04.07", "올리브영", "16,500원", R.color.primary_material_light);
-        View img10 = createContentLayout(inflater, mContentsLayout, "16.04.08", "바이크샵", "720,000원", R.color.primary_material_light);
+        mAdapter.addItem(new Date(), "크레마도로", new String("20,000"));
+        mAdapter.addItem(new Date(), "더 자스", new String("38,000"));
+        mAdapter.addItem(new Date(), "크레마도로", new String("12,000"));
 
-        mContentsLayout.addView(img1);
-        mContentsLayout.addView(img2);
-        mContentsLayout.addView(img3);
-        mContentsLayout.addView(img4);
-        mContentsLayout.addView(img5);
-        mContentsLayout.addView(img6);
-        mContentsLayout.addView(img7);
-        mContentsLayout.addView(img8);
-        mContentsLayout.addView(img9);
-        mContentsLayout.addView(img10);
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //Intent intent = new Intent(getApplication(), PostFormActivity.class);
+                //startActivity(intent);
+            }
+        });
+
         return mTab3Layout;
     }
 
-    public View createContentLayout(LayoutInflater inflater, ViewGroup layout, String date,
-                                    String shop, String price, int color)
-    {
-        View contentLayout = inflater.inflate(R.layout.tab1_card_detail_listview, layout, false);
+    private class ListViewAdapter extends BaseAdapter {
+        private Context mContext = null;
+        private ArrayList<ListData> mListData = new ArrayList<ListData>();
 
-        // background color
-        contentLayout.setBackgroundResource(color);
+        public ListViewAdapter(Context mContext) {
+            super();
+            this.mContext = mContext;
+        }
 
-        TextView _date = (TextView)contentLayout.findViewById(R.id.text_listview_date);
-        _date.setText(date);
+        @Override
+        public int getCount() {
+            return mListData.size();
+        }
 
-        TextView _shop = (TextView)contentLayout.findViewById(R.id.text_listview_shop);
-        _shop.setText(shop);
+        @Override
+        public Object getItem(int position) {
+            return mListData.get(position);
+        }
 
-        TextView _price = (TextView)contentLayout.findViewById(R.id.text_listview_price);
-        _price.setText(price);
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
 
-        return contentLayout;
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            ViewHolder holder;
+            if (convertView == null) {
+                holder = new ViewHolder();
+
+                LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                convertView = inflater.inflate(R.layout.tab3_layout_listview, null);
+
+                holder.mDate = (TextView) convertView.findViewById(R.id.tab3_listview_date);
+                holder.mShop = (TextView) convertView.findViewById(R.id.tab3_listview_shop);
+                holder.mPrice = (TextView) convertView.findViewById(R.id.tab3_listview_price);
+
+                convertView.setTag(holder);
+            } else {
+                holder = (ViewHolder) convertView.getTag();
+            }
+
+            ListData mData = mListData.get(position);
+            holder.mDate.setText(mData.mDate.toString());
+            holder.mShop.setText(mData.mShop);
+            holder.mPrice.setText(mData.mPrice.toString());
+
+            return convertView;
+        }
+
+        public void addItem(Date mDate, String mShop, String mPrice) {
+            ListData addInfo = null;
+            addInfo = new ListData();
+            addInfo.mDate = mDate;
+            addInfo.mShop = mShop;
+            addInfo.mPrice = mPrice;
+            mListData.add(addInfo);
+        }
+
+        public void remove(int position){
+            mListData.remove(position);
+            dataChange();
+        }
+
+        public void dataChange(){
+            mAdapter.notifyDataSetChanged();
+        }
+    }
+
+    public class ListData {
+        public Date mDate;
+        public String mShop;
+        public String mPrice;
+    }
+
+    private class ViewHolder {
+        public TextView mDate;
+        public TextView mShop;
+        public TextView mPrice;
     }
 }

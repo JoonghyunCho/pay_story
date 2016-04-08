@@ -16,15 +16,15 @@ public class Tab2 extends  Fragment {
     private View mTab2Layout = null;
     private LinearLayout mContentsLayout = null;
     private ImageView mSampleMapImage = null;
-    SwitchedImageView[] switchImages = null;
-    View.OnClickListener imageClickListener = null;
+    private SwitchedImageView[] switchImages = null;
+    private View.OnClickListener imageClickListener = null;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mTab2Layout = inflater.inflate(R.layout.tab2_layout, container, false);
         mContentsLayout = (LinearLayout)mTab2Layout.findViewById(R.id.tab2_layout);
         mSampleMapImage = (ImageView)mTab2Layout.findViewById(R.id.tab2_map_image);
-        final SwitchedImageView[] switchImages = new SwitchedImageView[4];
+        switchImages = new SwitchedImageView[4];
         switchImages[0] = new SwitchedImageView(R.drawable.hospital_pressed, R.drawable.hospital,
                                                 (ImageView)mTab2Layout.findViewById(R.id.tab2_img1));
         switchImages[1] = new SwitchedImageView(R.drawable.house_pressed, R.drawable.house,
