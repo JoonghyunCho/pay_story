@@ -13,17 +13,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //toolbar.setTitleTextColor(0xFF0000);
         toolbar.setTitle("PayStory");
         toolbar.setTitleTextColor(0xFF4E4E50);
         setSupportActionBar(toolbar);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        tabLayout.setTabTextColors(0xFF4A4B4E, 0x40e9ff);
+        tabLayout.setTabTextColors(0xFF4A4B4E, 0xFF40e9ff);
 
-        tabLayout.addTab(tabLayout.newTab().setText("����"));
-        tabLayout.addTab(tabLayout.newTab().setText("�����"));
-        tabLayout.addTab(tabLayout.newTab().setText("����"));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_name_1));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_name_2));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_name_3));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
