@@ -14,13 +14,15 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        Tab1 tab1 = null;
+        Tab1 tab1 = new Tab1();
         switch (position) {
             case 0:
-            case 1:
-            case 2:
-                tab1 = new Tab1();
                 return tab1;
+            case 1:
+                return tab1;
+            case 2:
+                Tab3 tab3 = new Tab3();
+                return tab3;
             default:
                 return null;
         }

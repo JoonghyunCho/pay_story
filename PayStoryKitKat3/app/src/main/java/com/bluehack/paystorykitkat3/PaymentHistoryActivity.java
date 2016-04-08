@@ -34,9 +34,9 @@ public class PaymentHistoryActivity extends AppCompatActivity {
         mAdapter = new ListViewAdapter(this);
         mListView.setAdapter(mAdapter);
 
-        mAdapter.addItem(new Date(), "크레마도로", new String("20000"));
-        mAdapter.addItem(new Date(), "크레마도로", new String("20000"));
-        mAdapter.addItem(new Date(), "크레마도로", new String("20000"));
+        mAdapter.addItem(new Date(), "크레마도로", new String("20,000"));
+        mAdapter.addItem(new Date(), "더 자스", new String("38,000"));
+        mAdapter.addItem(new Date(), "크레마도로", new String("12,000"));
 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
