@@ -1,8 +1,6 @@
 package com.bluehack.paystorykitkat3;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -11,18 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Currency;
 import java.util.Date;
 
-/**
- * Created by drago on 2016-04-08.
- */
 public class PaymentHistoryActivity extends AppCompatActivity {
     private ListView mListView = null;
     private ListViewAdapter mAdapter = null;
@@ -48,8 +40,7 @@ public class PaymentHistoryActivity extends AppCompatActivity {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //ListData mData = mAdapter.mListData.get(position);
-                //Toast.makeText(this, "click!!", Toast.LENGTH_SHORT).show();
+                ; // empty
             }
         });
     }
