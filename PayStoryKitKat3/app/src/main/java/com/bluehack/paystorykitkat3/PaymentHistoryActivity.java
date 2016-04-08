@@ -1,6 +1,7 @@
 package com.bluehack.paystorykitkat3;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -40,7 +41,8 @@ public class PaymentHistoryActivity extends AppCompatActivity {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ; // empty
+                Intent intent = new Intent(getApplication(), PostFormActivity.class);
+                startActivity(intent);
             }
         });
     }
